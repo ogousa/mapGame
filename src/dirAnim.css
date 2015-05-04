@@ -1,0 +1,191 @@
+.dir0 { animation: dir0 steps(4) 0.6s infinite; -webkit-animation: dir0 steps(4) 0.6s infinite; }
+
+@keyframes dir0 { from { background-position: 0px 0px; }
+  to { background-position: -200px 0px; } }
+
+@-webkit-keyframes dir0 { 0% { background-position: 0px 0px; }
+  100% { background-position: -200px 0px; } }
+
+.dir1 { animation: dir1 steps(4) 0.6s infinite; -webkit-animation: dir1 steps(4) 0.6s infinite; }
+
+@keyframes dir1 { from { background-position: 0px -47px; }
+  to { background-position: -200px -47px; } }
+
+@-webkit-keyframes dir1 { 0% { background-position: 0px -47px; }
+  100% { background-position: -200px -47px; } }
+
+.dir2 { animation: dir2 steps(4) 0.6s infinite; -webkit-animation: dir2 steps(4) 0.6s infinite; }
+
+@keyframes dir2 { from { background-position: 0px -94px; }
+  to { background-position: -200px -94px; } }
+
+@-webkit-keyframes dir2 { 0% { background-position: 0px -94px; }
+  100% { background-position: -200px -94px; } }
+
+.dir3 { animation: dir3 steps(4) 0.6s infinite; -webkit-animation: dir3 steps(4) 0.6s infinite; }
+
+@keyframes dir3 { from { background-position: 0px -141px; }
+  to { background-position: -200px -141px; } }
+
+@-webkit-keyframes dir3 { 0% { background-position: 0px -141px; }
+  100% { background-position: -200px -141px; } }
+
+.dir4 { animation: dir4 steps(4) 0.6s infinite; -webkit-animation: dir4 steps(4) 0.6s infinite; }
+
+@keyframes dir4 { from { background-position: 0px -188px; }
+  to { background-position: -200px -188px; } }
+
+@-webkit-keyframes dir4 { 0% { background-position: 0px -188px; }
+  100% { background-position: -200px -188px; } }
+
+.dir5 { animation: dir5 steps(4) 0.6s infinite; -webkit-animation: dir5 steps(4) 0.6s infinite; }
+
+@keyframes dir5 { from { background-position: 0px -235px; }
+  to { background-position: -200px -235px; } }
+
+@-webkit-keyframes dir5 { 0% { background-position: 0px -235px; }
+  100% { background-position: -200px -235px; } }
+
+.dir6 { animation: dir6 steps(4) 0.6s infinite; -webkit-animation: dir6 steps(4) 0.6s infinite; }
+
+@keyframes dir6 { from { background-position: 0px -282px; }
+  to { background-position: -200px -282px; } }
+
+@-webkit-keyframes dir6 { 0% { background-position: 0px -282px; }
+  100% { background-position: -200px -282px; } }
+
+.dir7 { animation: dir7 steps(4) 0.6s infinite; -webkit-animation: dir7 steps(4) 0.6s infinite; }
+
+@keyframes dir7 { from { background-position: 0px -329px; }
+  to { background-position: -200px -329px; } }
+
+@-webkit-keyframes dir7 { 0% { background-position: 0px -329px; }
+  100% { background-position: -200px -329px; } }
+
+.dir8 { animation: dir8 steps(4) 0.6s infinite; -webkit-animation: dir8 steps(4) 0.6s infinite; }
+
+@keyframes dir8 { from { background-position: 0px -376px; }
+  to { background-position: -200px -376px; } }
+
+@-webkit-keyframes dir8 { 0% { background-position: 0px -376px; }
+  100% { background-position: -200px -376px; } }
+
+.dir9 { animation: dir9 steps(4) 0.6s infinite; -webkit-animation: dir9 steps(4) 0.6s infinite; }
+
+@keyframes dir9 { from { background-position: 0px -423px; }
+  to { background-position: -200px -423px; } }
+
+@-webkit-keyframes dir9 { 0% { background-position: 0px -423px; }
+  100% { background-position: -200px -423px; } }
+
+.dir10 { animation: dir10 steps(4) 0.6s infinite; -webkit-animation: dir10 steps(4) 0.6s infinite; }
+
+@keyframes dir10 { from { background-position: 0px -470px; }
+  to { background-position: -200px -470px; } }
+
+@-webkit-keyframes dir10 { 0% { background-position: 0px -470px; }
+  100% { background-position: -200px -470px; } }
+
+.dir11 { animation: dir11 steps(4) 0.6s infinite; -webkit-animation: dir11 steps(4) 0.6s infinite; }
+
+@keyframes dir11 { from { background-position: 0px -517px; }
+  to { background-position: -200px -517px; } }
+
+@-webkit-keyframes dir11 { 0% { background-position: 0px -517px; }
+  100% { background-position: -200px -517px; } }
+
+.dir12 { animation: dir12 steps(4) 0.6s infinite; -webkit-animation: dir12 steps(4) 0.6s infinite; }
+
+@keyframes dir12 { from { background-position: 0px -564px; }
+  to { background-position: -200px -564px; } }
+
+@-webkit-keyframes dir12 { 0% { background-position: 0px -564px; }
+  100% { background-position: -200px -564px; } }
+
+.dir13 { animation: dir13 steps(4) 0.6s infinite; -webkit-animation: dir13 steps(4) 0.6s infinite; }
+
+@keyframes dir13 { from { background-position: 0px -611px; }
+  to { background-position: -200px -611px; } }
+
+@-webkit-keyframes dir13 { 0% { background-position: 0px -611px; }
+  100% { background-position: -200px -611px; } }
+
+.dir14 { animation: dir14 steps(4) 0.6s infinite; -webkit-animation: dir14 steps(4) 0.6s infinite; }
+
+@keyframes dir14 { from { background-position: 0px -658px; }
+  to { background-position: -200px -658px; } }
+
+@-webkit-keyframes dir14 { 0% { background-position: 0px -658px; }
+  100% { background-position: -200px -658px; } }
+
+.dir15 { animation: dir15 steps(4) 0.6s infinite; -webkit-animation: dir15 steps(4) 0.6s infinite; }
+
+@keyframes dir15 { from { background-position: 0px -705px; }
+  to { background-position: -200px -705px; } }
+
+@-webkit-keyframes dir15 { 0% { background-position: 0px -705px; }
+  100% { background-position: -200px -705px; } }
+
+.dir16 { animation: dir16 steps(4) 0.6s infinite; -webkit-animation: dir16 steps(4) 0.6s infinite; }
+
+@keyframes dir16 { from { background-position: 0px -752px; }
+  to { background-position: -200px -752px; } }
+
+@-webkit-keyframes dir16 { 0% { background-position: 0px -752px; }
+  100% { background-position: -200px -752px; } }
+
+.dir17 { animation: dir17 steps(4) 0.6s infinite; -webkit-animation: dir17 steps(4) 0.6s infinite; }
+
+@keyframes dir17 { from { background-position: 0px -799px; }
+  to { background-position: -200px -799px; } }
+
+@-webkit-keyframes dir17 { 0% { background-position: 0px -799px; }
+  100% { background-position: -200px -799px; } }
+
+.dir18 { animation: dir18 steps(4) 0.6s infinite; -webkit-animation: dir18 steps(4) 0.6s infinite; }
+
+@keyframes dir18 { from { background-position: 0px -846px; }
+  to { background-position: -200px -846px; } }
+
+@-webkit-keyframes dir18 { 0% { background-position: 0px -846px; }
+  100% { background-position: -200px -846px; } }
+
+.dir19 { animation: dir19 steps(4) 0.6s infinite; -webkit-animation: dir19 steps(4) 0.6s infinite; }
+
+@keyframes dir19 { from { background-position: 0px -893px; }
+  to { background-position: -200px -893px; } }
+
+@-webkit-keyframes dir19 { 0% { background-position: 0px -893px; }
+  100% { background-position: -200px -893px; } }
+
+.dir20 { animation: dir20 steps(4) 0.6s infinite; -webkit-animation: dir20 steps(4) 0.6s infinite; }
+
+@keyframes dir20 { from { background-position: 0px -940px; }
+  to { background-position: -200px -940px; } }
+
+@-webkit-keyframes dir20 { 0% { background-position: 0px -940px; }
+  100% { background-position: -200px -940px; } }
+
+.dir21 { animation: dir21 steps(4) 0.6s infinite; -webkit-animation: dir21 steps(4) 0.6s infinite; }
+
+@keyframes dir21 { from { background-position: 0px -987px; }
+  to { background-position: -200px -987px; } }
+
+@-webkit-keyframes dir21 { 0% { background-position: 0px -987px; }
+  100% { background-position: -200px -987px; } }
+
+.dir22 { animation: dir22 steps(4) 0.6s infinite; -webkit-animation: dir22 steps(4) 0.6s infinite; }
+
+@keyframes dir22 { from { background-position: 0px -1034px; }
+  to { background-position: -200px -1034px; } }
+
+@-webkit-keyframes dir22 { 0% { background-position: 0px -1034px; }
+  100% { background-position: -200px -1034px; } }
+
+.dir23 { animation: dir23 steps(4) 0.6s infinite; -webkit-animation: dir23 steps(4) 0.6s infinite; }
+
+@keyframes dir23 { from { background-position: 0px -1081px; }
+  to { background-position: -200px -1081px; } }
+
+@-webkit-keyframes dir23 { 0% { background-position: 0px -1081px; }
+  100% { background-position: -200px -1081px; } }

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<!--[if lt IE 9]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+	<meta charset="utf-8" />
+   	<title>Map Game</title> 
+
+	<link rel="stylesheet" href="mapGame.css"> 
+<!--	<link rel="stylesheet" href="mapGameRound.css"> -->
+
+	<link rel="stylesheet" href="dirAnim.css">
+
+   	<script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script> 
+   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.16.1/TweenMax.min.js"></script>
+
+</head> 
+
+<body> 
+
+	<script src="mapGame.js"></script> 
+<!--	<script src="mapGameRound.js"></script> -->
+
+    <div id="mapDiv"></div> 
+	<div class="planeShadow"></div>
+	<div id="pointer"></div> 
+	<img id="mapBorder"/> 
+
+	<h2>MAP GAME</h2>
+	<div class="author" id="myName">SERGIY DAGAYEV</div>
+	<div class="author" id="year">2015</div>
+
+    <div id="mapMask"></div> 
+	<div class="info"></div>
+	<div class="ship"></div>
+	<div class="plane"></div>
+	<div class="instructions">Control the ship by clicking on the map</div>
+	<img id="plus" src="pic/plus.png"/>
+	<img id="minus" src="pic/minus.png"/>
+
+</body> 
+</html>
