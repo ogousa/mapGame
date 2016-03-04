@@ -88,7 +88,7 @@ jQuery(document).ready(function($) {
 	var game = (function() {
 		return {
 			myKey: 			(document.URL.indexOf("file:") == 0)? "" : "&key=AIzaSyBFOqgBAFOtBdfNft3ni5OvGG5bBd3SM40",
-			debug: 			false,//true,
+			debug: 			true,
 			start: 			{lat:40.6865771, lng:-74.0363669},	// New York
 		//	start: 			{lat:1.399579, lng:103.978298},		// Singapour
 			width: 			parseInt($("#mapDiv").css("width")),
@@ -109,48 +109,9 @@ jQuery(document).ready(function($) {
 		}
 	})();
 
+	game.loadWater = function()	{
+		game.loading = true;
 
-
-	$("#mapBorder").attr("src", "pic/mapRound.png");
-
-	// create main map
-    var map = new google.maps.Map(document.getElementById("mapDiv"), { center: game.start, zoom: game.zoom });
-	map.setOptions({styles: cleanStyle});
-	map.id = "map";
-
-	var moveTo = {x:200,y:0};	// initial move
-	var position = {x: (game.width-3)/2, y: (game.height-3)/2};
-
-	// Create an in-memory canvas and store its 2d context
-	var waterCanvas = document.createElement('canvas');
-	waterCanvas.setAttribute('width', game.waterWidth);
-	waterCanvas.setAttribute('height', game.waterHeight);
-
-	// add it to the body on the top
-	waterCanvas.style.position = "absolute";
-//	waterCanvas.style.top = height + "px";
-	waterCanvas.style.top = "0px";
-
-	waterCanvas.style.left = "0px";
-	waterCanvas.style.opacity = 0.5;
-
-	if(game.debug)
-	{
-		document.body.appendChild(waterCanvas);	// add it to the body
-
-	}
-	else
-	{
-		var pointer = document.getElementById("pointer");
-        document.body.removeChild(pointer);
-	}
-
-	var waterContext = waterCanvas.getContext('2d');
-
-	loadWater();
-
-	function loadWater()
-	{
 		var center = map.getCenter();
 
 		game.water.src = "http://maps.googleapis.com/maps/api/staticmap?scale=1" +  
@@ -170,6 +131,44 @@ jQuery(document).ready(function($) {
 			position.y = game.waterHeight/2;
 		}
 	}
+
+
+	$("#mapBorder").attr("src", "pic/mapRound.png");
+
+	// create main map
+    var map = new google.maps.Map(document.getElementById("mapDiv"), { center: game.start, zoom: game.zoom });
+	map.setOptions({styles: cleanStyle});
+	map.id = "map";
+
+	var moveTo = {x:200,y:0};	// initial move
+	var position = {x: (game.width-3)/2, y: (game.height-3)/2};
+
+	// Create an in-memory canvas and store its 2d context
+	var waterCanvas = document.createElement('canvas');
+	waterCanvas.setAttribute('width', game.waterWidth);
+	waterCanvas.setAttribute('height', game.waterHeight);
+
+	// add it to the body on the top
+	waterCanvas.style.position = "absolute";
+	waterCanvas.style.top = "0px";
+
+	waterCanvas.style.left = game.width + "px";//"0px";
+	waterCanvas.style.opacity = 1;//0.5;
+
+	if(game.debug)
+	{
+		document.body.appendChild(waterCanvas);	// add it to the body
+	}
+	else
+	{
+		var pointer = document.getElementById("pointer");
+        document.body.removeChild(pointer);
+	}
+
+	var waterContext = waterCanvas.getContext('2d');
+
+	game.loadWater();
+
 
     $("#mapMask").click(function(e){
 
@@ -194,8 +193,7 @@ jQuery(document).ready(function($) {
 	var direction = 0;
 	
 	var pointer = $('#pointer');
-	pointer.css("left", (position.x - 1) + "px");
-	pointer.css("top", game.height + (position.y - 1) + "px");
+	pointer.css("z-index", 1000);
 
 	// initial movement
 	var curMove = calculateMove();
@@ -239,15 +237,14 @@ jQuery(document).ready(function($) {
 	    		position.x += curMove.x;
 	    		position.y += curMove.y;
 
-	    		pointer.css("left", position.x + "px");
-				pointer.css("top", position.y + "px");
+	    		pointer.css("left", (game.width+position.x - 2) + "px");
+				pointer.css("top", (position.y - 2) + "px");
 
 				// load new water map
 				if((position.x < game.waterBorder || position.x > game.waterWidth - game.waterBorder || 
 					position.y < game.waterBorder || position.y > game.waterHeight - game.waterBorder) && !game.loading)
 				{
-					game.loading = true;
-					loadWater();
+					game.loadWater();
 				}
 				return;
 			}
@@ -308,8 +305,7 @@ jQuery(document).ready(function($) {
 		{
 			game.zoom++;
 
-			game.loading = true;
-			loadWater();
+			game.loadWater();
 			map.setZoom(game.zoom);
 		}
 	});
@@ -318,9 +314,8 @@ jQuery(document).ready(function($) {
 	$("#minus").on("click", function(){
 		if(game.zoom > 2)
 		{
-			game.loading = true;
 			game.zoom--;
-			loadWater();
+			game.loadWater();
 			map.setZoom(game.zoom);
 		}
 	});
