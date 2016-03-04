@@ -85,49 +85,59 @@ jQuery(document).ready(function($) {
 	];
 
 
-	var myKey = "&key=AIzaSyBFOqgBAFOtBdfNft3ni5OvGG5bBd3SM40";
-	if(document.URL.indexOf("file:") == 0)
-		myKey = "";
+	var game = (function() {
+		return {
+			myKey: 			(document.URL.indexOf("file:") == 0)? "" : "&key=AIzaSyBFOqgBAFOtBdfNft3ni5OvGG5bBd3SM40",
+			debug: 			false,//true,
+			start: 			{lat:40.6865771, lng:-74.0363669},	// New York
+		//	start: 			{lat:1.399579, lng:103.978298},		// Singapour
+			width: 			parseInt($("#mapDiv").css("width")),
+			height: 		parseInt($("#mapDiv").css("height")),
+			waterWidth: 	640,	// free Static Maps API V2 is limited to 640x640 image
+			waterHeight: 	640,
+			waterBorder: 	30,		// distance to the end of the current water map
+			zoom: 			14,
+			loading: 		true,
+			water: 			waterInit()
 
-	var debug = false;
+		};
 
-	var center = {lat:40.6865771, lng:-74.0363669};	// New York
-//	var center = {lat:1.399579, lng:103.978298};	// Singapour
+		function waterInit() {
+			var water = new Image();	// create green water map
+			water.crossOrigin = "http://maps.googleapis.com/crossdomain.xml";
+			return water; 
+		}
+	})();
 
-	var width = parseInt($("#mapDiv").css("width"));
-	var height = parseInt($("#mapDiv").css("height"));
 
-	var waterWidth = 640;	// free Static Maps API V2 is limited to 640x640 image 
-	var waterHeight = 640;
-	var waterBorder = 30;	// distance to the end of the current water map
-
-	var zoom = 14;
-	var loading = true;
 
 	$("#mapBorder").attr("src", "pic/mapRound.png");
 
 	// create main map
-    var map = new google.maps.Map(document.getElementById("mapDiv"), { center: center, zoom: zoom });
+    var map = new google.maps.Map(document.getElementById("mapDiv"), { center: game.start, zoom: game.zoom });
 	map.setOptions({styles: cleanStyle});
 	map.id = "map";
 
 	var moveTo = {x:200,y:0};	// initial move
-	var position = {x: (width-3)/2, y: (height-3)/2};
+	var position = {x: (game.width-3)/2, y: (game.height-3)/2};
 
 	// Create an in-memory canvas and store its 2d context
 	var waterCanvas = document.createElement('canvas');
-	waterCanvas.setAttribute('width', waterWidth);
-	waterCanvas.setAttribute('height', waterHeight);
+	waterCanvas.setAttribute('width', game.waterWidth);
+	waterCanvas.setAttribute('height', game.waterHeight);
 
 	// add it to the body on the top
 	waterCanvas.style.position = "absolute";
-	waterCanvas.style.top = height + "px";
+//	waterCanvas.style.top = height + "px";
+	waterCanvas.style.top = "0px";
+
 	waterCanvas.style.left = "0px";
 	waterCanvas.style.opacity = 0.5;
 
-	if(debug)
+	if(game.debug)
 	{
 		document.body.appendChild(waterCanvas);	// add it to the body
+
 	}
 	else
 	{
@@ -137,29 +147,27 @@ jQuery(document).ready(function($) {
 
 	var waterContext = waterCanvas.getContext('2d');
 
-	loadWater(center, zoom, waterWidth, waterHeight);
+	loadWater();
 
-	function loadWater(center, zoom, width, height)
+	function loadWater()
 	{
+		var center = map.getCenter();
 
-		// create green water map
-		var water = new Image();
-		water.crossOrigin = "http://maps.googleapis.com/crossdomain.xml";
-		water.src = "http://maps.googleapis.com/maps/api/staticmap?scale=1" +  
-		"&center=" + center.lat + "," + center.lng + "&zoom=" + zoom + "&size=" + width + "x" + height + myKey + 
+		game.water.src = "http://maps.googleapis.com/maps/api/staticmap?scale=1" +  
+		"&center=" + center.lat() + "," + center.lng() + "&zoom=" + game.zoom + "&size=" + game.waterWidth + "x" + game.waterHeight + game.myKey + 
 		"&sensor=false&visual_refresh=true&style=element:labels|visibility:off&style=feature:water|color:0x00FF00&style=feature:transit|visibility:off&style=feature:poi|visibility:off&style=feature:road|visibility:off&style=feature:administrative|visibility:off";
 
-		water.onload = function() {
-			loading = false;
+		game.water.onload = function() {
+			game.loading = false;
 	    	// Put the water image inside the water canvas
 		//	$('.info').text(this.width + "x" + this.height);
 			waterContext.clearRect(0, 0, waterContext.width, waterContext.height);
-	   		waterContext.drawImage(this, 0, 0, this.width, this.height, 0, 0, waterCanvas.width, waterCanvas.height);
+	   		waterContext.drawImage(this, 0, 0, game.waterWidth, game.waterHeight, 0, 0, waterCanvas.width, waterCanvas.height);
 	   	//	waterContext.fillStyle = "rgb(200,0,0)";  
 		//	waterContext.fillRect(10, 10, 50, 50);
 
-			position.x = waterWidth/2;
-			position.y = waterHeight/2;
+			position.x = game.waterWidth/2;
+			position.y = game.waterHeight/2;
 		}
 	}
 
@@ -167,8 +175,8 @@ jQuery(document).ready(function($) {
 
     	$(".instructions").hide();
 
-		moveTo.x = e.pageX - e.target.offsetLeft - width/2;
-		moveTo.y = e.pageY - e.target.offsetTop - height/2;
+		moveTo.x = e.pageX - e.target.offsetLeft - game.width/2;
+		moveTo.y = e.pageY - e.target.offsetTop - game.height/2;
 
 		curMove = calculateMove();
 	});
@@ -187,7 +195,7 @@ jQuery(document).ready(function($) {
 	
 	var pointer = $('#pointer');
 	pointer.css("left", (position.x - 1) + "px");
-	pointer.css("top", height + (position.y - 1) + "px");
+	pointer.css("top", game.height + (position.y - 1) + "px");
 
 	// initial movement
 	var curMove = calculateMove();
@@ -217,7 +225,7 @@ jQuery(document).ready(function($) {
 
 	// change map pan and ship direction each N milliseconds
 	setInterval(function(){
-		if(loading)
+		if(game.loading)
 			return;
 
 		steps--;
@@ -235,12 +243,11 @@ jQuery(document).ready(function($) {
 				pointer.css("top", position.y + "px");
 
 				// load new water map
-				if((position.x < waterBorder || position.x > waterWidth - waterBorder || 
-					position.y < waterBorder || position.y > waterHeight - waterBorder) && !loading)
+				if((position.x < game.waterBorder || position.x > game.waterWidth - game.waterBorder || 
+					position.y < game.waterBorder || position.y > game.waterHeight - game.waterBorder) && !game.loading)
 				{
-					loading = true;
-					var center = map.getCenter();
-					loadWater({lat: center.k, lng: center.D}, zoom, width, height);
+					game.loading = true;
+					loadWater();
 				}
 				return;
 			}
@@ -297,26 +304,24 @@ jQuery(document).ready(function($) {
 	$("#plus").css("left", "768px");
 	$("#plus").css("top", "140px");
 	$("#plus").on("click", function(){
-		if(zoom < 18)
+		if(game.zoom < 18)
 		{
-			zoom++;
+			game.zoom++;
 
-			loading = true;
-			var center = map.getCenter();
-			loadWater({lat: center.k, lng: center.D}, zoom, width, height);
-			map.setZoom(zoom);
+			game.loading = true;
+			loadWater();
+			map.setZoom(game.zoom);
 		}
 	});
 	$("#minus").css("left", "837px");
 	$("#minus").css("top", "204px");
 	$("#minus").on("click", function(){
-		if(zoom > 2)
+		if(game.zoom > 2)
 		{
-			loading = true;
-			var center = map.getCenter();
-			zoom--;
-			loadWater({lat: center.k, lng: center.D}, zoom, width, height);
-			map.setZoom(zoom);
+			game.loading = true;
+			game.zoom--;
+			loadWater();
+			map.setZoom(game.zoom);
 		}
 	});
 
