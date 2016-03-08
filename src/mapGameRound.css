@@ -112,3 +112,10 @@ h2 {
 #plus, #minus {
   	position: absolute;
 }
+
+.demoText {
+	position: absolute;
+	color: #aaaa00;
+	font-size: 14px;
+	text-align: center;
+}
