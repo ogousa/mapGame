@@ -5,76 +5,67 @@ body {
 	margin: 0px;
 	padding: 0px;
 	background-color:#120200;
-	font:10px Arial, sans-serif;
-	color:#ffffff;
+	font: 10px Arial, sans-serif;
+	color: #ffffff;
 	text-align:left;
-
 }
 #mapDiv, #mapMask {
 	position: fixed;
-	width: 1050px;
-	height: 760px;
 	left: 0px;
 	top: 0px; 
 }
 #mapBorder {
 	position: absolute;
-	width: 1180px;
-	height: 934px;
 	left: 0px;
 	top: 0px; 
-
 }
-.info { 
-   	position: fixed;
-	top: 5px;
-	left: 5px;
-}
-.ship { 
-    width:50px; height:47px; 
-    background: url('pic/ship.png'); 
+#ship { 
    	position: absolute;
-	top:350px;
+    width: 50px; 
+    height: 47px; 
+    background: url('pic/ship.png'); 
+	top: 350px;
 	left: 560px;
 }
 .shadowed {
-	-webkit-filter: drop-shadow(3px 3px 3px rgba(0,0,0,0.6));
-	filter: drop-shadow(3px 3px 3px rgba(0,0,0,0.6));
+	-webkit-filter: drop-shadow(3px 3px 3px rgba(0,0,0,0.7));
+	filter: drop-shadow(3px 3px 3px rgba(0,0,0,0.7));
 }
 #pointer { 
-    width:3px; height:3px; 
-    background-color: #000000; 
-   	position: relative;
+   	position: absolute;
+    width: 5px; 
+    height: 5px; 
+    background-color: #ff0000; 
 }
-.plane { 
-    width:26px; height:24px; /* exactly the size of an image in our sprite */
-    background-image:url('pic/plane.png'); 
+#plane { 
    	position: absolute;
-	top:110px;
+    width: 26px; 
+    height: 24px; 
 	left: -50px;
+    background-image: url('pic/plane.png'); 
 }	
-.planeShadow { 
-    width:26px; height:24px; /* exactly the size of an image in our sprite */
-    background-image:url('pic/planeShadow.png'); 
+#planeShadow { 
    	position: absolute;
-	top:210px;
 	left: -50px;
+    width: 26px; 
+    height: 24px;
+    background-image:url('pic/planeShadow.png'); 
 	opacity: 0;
 }
 h2 {
-  	font-size:120px;
   	position: absolute;
-	top:665px;
+  	font-size: 120px;
+	top: 665px;
 	left: 180px;
 	opacity: 0;
 
 }
 .author {
-  	font-size:9px;
+  	position: absolute;
+	top: 885px;
+  	font-size: 9px;
   	color: #cccccc;
   	font-weight: bold;
-  	position: absolute;
-	top:885px;
 	opacity: 0;
 }
 #myName {
@@ -100,15 +91,22 @@ h2 {
 	0 20px 20px rgba(0,0,0,.3);
 }
 
-.instructions {
-  	font-size:18px;
-  	color: #ffeeaa;
+#instructions {
   	position: absolute;
-	top:15px;
-	left: 360px;
+	top: 50px;
+	left: 430px;
+  	font-size: 18px;
+  	color: #ffeeaa;
 	opacity: 0;
 }
 
 #plus, #minus {
   	position: absolute;
+}
+
+.demoText {
+	position: absolute;
+	color: #aaaa00;
+	font-size: 14px;
+	text-align: center;
 }

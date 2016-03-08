@@ -1,4 +1,36 @@
 var cleanStyle = [
+	{
+		featureType: "administrative.province",
+		stylers: [{ visibility: "off" }]
+	},
+	{
+		featureType: "road.highway",
+		stylers: [{ visibility: "off" }]
+	},
+	{
+		featureType: "water",
+		elementType: "labels",
+		stylers: [{ visibility: "off" }]
+	},
+	{
+		featureType: "water",
+		elementType: "all",
+		stylers: [ { color: "#99bbdd" } ]
+	},
+	{
+		featureType: "transit.line",
+		stylers: [{ visibility: "off" }]
+	},
+	{
+		featureType: "transit.station.rail",
+		stylers: [{ visibility: "off" }]
+	},
+	{
+		stylers: [{ gamma: 0.75 }]
+	}
+];
+
+var cleanStyleRed = [
   	{
     	featureType: "administrative.province",
     	stylers: [{ visibility: "off" }]
