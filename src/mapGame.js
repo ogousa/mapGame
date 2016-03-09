@@ -4,7 +4,7 @@ jQuery(document).ready(function($) {
 
 	(function() {
 
-		var version = 2;	// version 3 is a round map, version 2 is old map
+		var version = 3;	// version 3 is a round map, version 2 is old map
 		var debug =	true;	// to show hidden water map
 
 		var myKey =	(document.URL.indexOf("file:") == 0)? "" : "&key=AIzaSyBFOqgBAFOtBdfNft3ni5OvGG5bBd3SM40";
